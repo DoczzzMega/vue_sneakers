@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import axios from 'axios'
 
 import Header from '@/components/Header.vue'
@@ -9,11 +9,13 @@ import Filter from '@/components/Filter.vue'
 
 const items = ref([])
 
-const sortBy = ref('')
-const searchQuery = ref('')
+const filters = reactive({
+  sortBy: '',
+  searchQuery: ''
+})
 
-const onChangeSelect = event => sortBy.value = event.target.value
-const onSearch = event => searchQuery.value = event.target.value
+const onChangeSelect = event => filters.sortBy = event.target.value
+const onChangeSearchInput = event => filters.searchQuery = event.target.value
 
 onMounted(async () => {
   try {
@@ -24,18 +26,18 @@ onMounted(async () => {
   }
 })
 
-watch(sortBy, async () => {
+watch(filters, async () => {
   try {
-    const { data } = await axios.get('https://1efab2510c8f6c5d.mokky.dev/items?sortBy=' + sortBy.value)
+    const { data } = await axios.get('https://1efab2510c8f6c5d.mokky.dev/items?sortBy=' + filters.sortBy)
     items.value = data
   } catch (err) {
     console.log(err)
     }
   })
 
-watch(searchQuery, async () => {
+watch(filters, async () => {
   try {
-    const { data } = await axios.get('https://1efab2510c8f6c5d.mokky.dev/items?title=*' + searchQuery.value + '*')
+    const { data } = await axios.get('https://1efab2510c8f6c5d.mokky.dev/items?title=*' + filters.searchQuery + '*')
     items.value = data
     console.log(items)
   } catch (err) {
@@ -54,7 +56,7 @@ watch(searchQuery, async () => {
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-3xl font-bold">Все кроссовки</h2>
 
-        <Filter :on-change-select="onChangeSelect" :on-search="onSearch" />
+        <Filter :on-change-select="onChangeSelect" :on-change-search-input="onChangeSearchInput" />
       </div>
 
       <CardList :items="items" />

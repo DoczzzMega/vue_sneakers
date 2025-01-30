@@ -2,7 +2,7 @@
 
 defineProps({
   onChangeSelect: Function,
-  onSearch: Function,
+  onChangeSearchInput: Function,
 })
 
 </script>
@@ -18,7 +18,7 @@ defineProps({
 
     <div class="relative">
       <img class="absolute top-3 left-4" src="/search.svg" alt="Search">
-      <input @change="onSearch" class="border rounded-md pl-11 pr-4 py-2 outline-none focus:border-gray-400"
+      <input @change="onChangeSearchInput" class="border rounded-md pl-11 pr-4 py-2 outline-none focus:border-gray-400"
              type="text"
              placeholder="Поиск..."
       >
