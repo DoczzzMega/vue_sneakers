@@ -9,6 +9,16 @@ import Filter from '@/components/Filter.vue'
 
 const items = ref([])
 
+const drawerIsOpened = ref(false)
+
+const openDrawer = () => {
+  drawerIsOpened.value = true
+}
+
+const closeDrawer = () => {
+  drawerIsOpened.value = false
+}
+
 const filters = reactive({
   sortBy: 'title',
   searchQuery: '',
@@ -99,15 +109,18 @@ watch(filters, async () => {
   await fetchFavorites()
 })
 
-
+provide('cartActions', {
+  openDrawer,
+  closeDrawer,
+})
 
 </script>
 
 <template>
-    <Drawer v-if="false" />
+  <Drawer v-if="drawerIsOpened" />
 
   <div class="w-4/5 mx-auto mt-14 bg-white rounded-xl shadow-xl">
-    <Header />
+    <Header @open-drawer="openDrawer" />
 
     <div class="p-14">
       <div class="flex justify-between items-center mb-8">
@@ -116,7 +129,7 @@ watch(filters, async () => {
         <Filter :on-change-select="onChangeSelect" :on-change-search-input="onChangeSearchInput" />
       </div>
 
-      <CardList :items="items" @addToFavorite="addToFavorite"/>
+      <CardList :items="items" @add-to-favorite="addToFavorite"/>
     </div>
   </div>
 </template>
