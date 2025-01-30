@@ -6,6 +6,8 @@
     items: Array
   })
 
+  const emit = defineEmits(['addToFavorite'])
+
 </script>
 
 <template>
@@ -18,6 +20,8 @@
           :title="item.title"
           :image-url="item.imageUrl"
           :price="item.price"
+          :is-favorite="item.isFavorite"
+          :on-click-favorite="() => emit('addToFavorite', item)"
     />
 
 

@@ -10,7 +10,7 @@ import CartItemList from '@/components/CartItemList.vue'
 
   <div class="fixed top-0 left-0 w-full h-full bg-black z-10 opacity-70"></div>
 
-  <div class="fixed top-0 right-0 w-96 h-full bg-white z-20 p-8 flex flex-col">
+  <div class="fixed top-0 right-0 w-96 h-full bg-white z-20 p-8 flex flex-col overflow-y-auto">
 
     <DrawerHead />
 
