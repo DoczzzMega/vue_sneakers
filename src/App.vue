@@ -202,7 +202,7 @@ provide('cart', {
 
     <div class="p-6 xs:p-14">
       <div class="md:flex-wrap flex flex-col md:flex-row md:justify-between md:items-center :mb-8">
-        <h2 class="mb-7 md:mb-7 text-3xl font-bold">Все кроссовки</h2>
+        <h2 class="mb-7 md:mb-7 text-xl xs:text-2xl sm:text-3xl font-bold">Все кроссовки</h2>
 
         <Filter :on-change-select="onChangeSelect" :on-change-search-input="onChangeSearchInput" />
       </div>
