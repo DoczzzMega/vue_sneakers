@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col mb-8 md:flex-row gap-5">
+  <div class="flex flex-col md:flex-row gap-5">
     <select
       @change="onChangeSelect"
       class="max-w-60 border px-3 py-2 rounded-md outline-none focus:border-gray-400"
