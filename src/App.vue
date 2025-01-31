@@ -151,6 +151,7 @@ onMounted(async () => {
   await fetchItems()
   await fetchFavorites()
 
+  //для обновления кнопок, которые есть в localstorage
   items.value = items.value.map((item) => ({
     ...item,
     isAdded: cart.value.some((cartItem) => cartItem.id === item.id),
@@ -161,13 +162,6 @@ watch(filters, async () => {
   await fetchItems()
   await fetchFavorites()
 })
-
-// watch(
-//   cart, () => {
-//     console.log('111')
-//   },
-//   { deep: true },
-// )
 
 // сработает при полном очищении корзины
 watch(cart, () => {
