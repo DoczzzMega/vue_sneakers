@@ -7,3 +7,5 @@
 body    {
     background-color: rgb(247, 254, 231);
 }
+
+body:has(.my-cart-modal) { overflow: hidden }

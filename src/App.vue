@@ -200,9 +200,9 @@ provide('cart', {
   <div class="w-4/5 mx-auto mt-14 bg-white rounded-xl shadow-xl">
     <Header :total-price="totalPrice" @open-drawer="openDrawer" />
 
-    <div class="p-14">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold">Все кроссовки</h2>
+    <div class="p-6 xs:p-14">
+      <div class="md:flex-wrap flex flex-col md:flex-row md:justify-between md:items-center :mb-8">
+        <h2 class="mb-7 md:mb-7 text-3xl font-bold">Все кроссовки</h2>
 
         <Filter :on-change-select="onChangeSelect" :on-change-search-input="onChangeSearchInput" />
       </div>
