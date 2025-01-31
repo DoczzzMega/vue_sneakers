@@ -10,13 +10,15 @@ const emit = defineEmits(['openDrawer'])
   <header
     class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-slate-300 px-6 xs:px-10 py-8"
   >
-    <div class="flex items-center gap-4 mb-4 md:mb-0">
-      <img src="/logo.png" alt="Logo" class="w-10" />
-      <div>
-        <h2 class="text-xl font-bold uppercase">Vue Sneakers</h2>
-        <p class="text-slate-400">Магазин лучших кроссовок</p>
+    <RouterLink to="/">
+      <div class="flex items-center gap-4 mb-4 md:mb-0">
+        <img src="/logo.png" alt="Logo" class="w-10" />
+        <div>
+          <h2 class="text-xl font-bold uppercase">Vue Sneakers</h2>
+          <p class="text-slate-400">Магазин лучших кроссовок</p>
+        </div>
       </div>
-    </div>
+    </RouterLink>
 
     <ul class="flex flex-col xs:flex-row items-center gap-8 xl:gap-8 mr-14 text-gray-500">
       <li
@@ -27,10 +29,12 @@ const emit = defineEmits(['openDrawer'])
         <b>{{ totalPrice }} руб.</b>
       </li>
 
-      <li class="flex items-center cursor-pointer gap-5 hover:text-black">
-        <img class="" src="/heart.svg" alt="Heart" />
-        <span class="xs:hidden lg:block">Закладки</span>
-      </li>
+      <RouterLink to="/favorites">
+        <li class="flex items-center cursor-pointer gap-5 hover:text-black">
+          <img class="" src="/heart.svg" alt="Heart" />
+          <span class="xs:hidden lg:block">Закладки</span>
+        </li>
+      </RouterLink>
 
       <li class="flex items-center cursor-pointer gap-5 hover:text-black">
         <img src="/profile.svg" alt="Profile" />
