@@ -1,7 +1,7 @@
 <script setup>
 import DrawerHead from '@/components/DrawerHead.vue'
 import CartItemList from '@/components/CartItemList.vue'
-import { inject, defineEmits } from 'vue'
+import { inject, defineEmits, ref } from 'vue'
 import InfoBlock from '@/components/infoBlock.vue'
 
 defineProps({
