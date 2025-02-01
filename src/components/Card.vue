@@ -1,9 +1,7 @@
 <script setup>
-
 import { computed } from 'vue'
 
 const props = defineProps({
-
   title: String,
   imageUrl: String,
   price: Number,
@@ -11,26 +9,25 @@ const props = defineProps({
   isAdded: Boolean,
   onClickFavorite: Function,
   onClickAdd: Function,
-
 })
 
 const price = computed(() => {
-  return props.price?.toLocaleString('ru-RU');
+  return props.price?.toLocaleString('ru-RU')
 })
-
-
-
 </script>
 
 <template>
-
-  <div class=" relative bg-white border border-slate-100 rounded-3xl p-8 cursor-pointer transition hover:-translate-y-2 hover:shadow-lg">
-    <img :src="!isFavorite ? '/like-1.svg' : '/like-2.svg'"
-         alt="Like 1"
-         class="absolute t-8 l-8"
-         @click="onClickFavorite"
-    >
-    <img :src="imageUrl" alt="Sneaker">
+  <div
+    class="relative bg-white border border-slate-100 rounded-3xl p-8 cursor-pointer transition hover:-translate-y-2 hover:shadow-lg"
+  >
+    <img
+      v-if="onClickFavorite"
+      :src="!isFavorite ? '/like-1.svg' : '/like-2.svg'"
+      alt="Like 1"
+      class="absolute t-8 l-8"
+      @click="onClickFavorite"
+    />
+    <img :src="imageUrl" alt="Sneaker" />
 
     <p class="mt-2">{{ title }}</p>
 
@@ -40,14 +37,11 @@ const price = computed(() => {
         <b>{{ price }} руб.</b>
       </div>
 
-      <button @click="onClickAdd">
-        <img :src="!isAdded ? '/plus.svg' : '/checked.svg' " alt="Plus">
+      <button v-if="onClickAdd" @click="onClickAdd">
+        <img :src="!isAdded ? '/plus.svg' : '/checked.svg'" alt="Plus" />
       </button>
     </div>
   </div>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

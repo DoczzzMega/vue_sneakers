@@ -11,6 +11,8 @@ defineProps({
   isCreatingOrder: Boolean,
 })
 
+const orderId = ref(null)
+
 const emit = defineEmits(['createOrder'])
 
 const { closeDrawer } = inject('cart')
